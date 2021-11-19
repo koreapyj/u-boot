@@ -412,4 +412,12 @@
 #define PHY_POWER_SAVING_M		0x300
 #define PHY_POWER_SAVING_TX		0x0
 
+#ifndef CONFIG_SYS_NONCACHED_MEMORY
+/*
+ * noncached_alloc is provided only for ARM. Add a prototype here for other
+ * platforms to suppress compilation warning.
+ */
+phys_addr_t noncached_alloc(size_t size, size_t align);
+#endif
+
 #endif /* _MTK_ETH_H_ */
