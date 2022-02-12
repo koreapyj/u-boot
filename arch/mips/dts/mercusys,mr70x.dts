@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: GPL-2.0
+
+/dts-v1/;
+
+#include "mt7621.dtsi"
+
+/ {
+	compatible = "mercusys,mr70x", "mediatek,mt7621-soc";
+	model = "Mercusys MR70X";
+
+	aliases {
+		serial0 = &uart0;
+		spi0 = &spi;
+	};
+
+	chosen {
+		stdout-path = &uart0;
+	};
+};
+
+&pinctrl {
+	state_default: pin_state {
+	};
+};
+
+&uart0 {
+	status = "okay";
+};
+
+&gpio {
+	status = "okay";
+};
+
+&spi {
+	status = "okay";
+	num-cs = <2>;
+
+	spi-flash@0 {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		compatible = "jedec,spi-nor";
+		spi-max-frequency = <25000000>;
+		reg = <0>;
+	};
+};
+
+&eth {
+	status = "okay";
+};
